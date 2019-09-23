@@ -1,5 +1,6 @@
 package array_and_slices
 
+import "reflect"
 import "testing"
 
 func TestSum(t *testing.T) {
@@ -10,7 +11,7 @@ func TestSum(t *testing.T) {
 		want := 15
 
 		if want != got {
-			t.Errorf("Expected %d but got %d, given %v", got, want, numbers)
+			t.Errorf("Expected %d but got %d, given %v", want, got, numbers)
 		}
 	})
 
@@ -21,7 +22,16 @@ func TestSum(t *testing.T) {
 		want := 6
 
 		if want != got {
-			t.Errorf("Expected %d but got %d, given %v", got, want, numbers)
+			t.Errorf("Expected %d but got %d, given %v", want, got, numbers)
 		}
 	})
+}
+
+func TestSumAll(t *testing.T) {
+	got := SumAll([]int{1, 2}, []int{3, 4})
+	want := []int{3, 7}
+
+	if !reflect.DeepEqual(got, want) {
+		t.Errorf("Expected %v but got %v", want, got)
+	}
 }
